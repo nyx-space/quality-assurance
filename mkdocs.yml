@@ -1,3 +1,149 @@
-site_name: Quality Assurance Policy
+site_name: Quality Assurance
 theme:
   name: material
+  features:
+    - header.autohide
+    - navigation.expand
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: light blue
+      accent: indigo
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: light blue
+      accent: indigo
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Purpose: index.md
+  - Meta:
+      - Authors: meta/authors.md
+      - Feedback: meta/feedback.md
+      - License: meta/license.md
+  - Process:
+      - Roles and responsibilities: process/roles.md
+      - Process diagram: process/process.md
+      - Requirements: process/requirements.md
+      - Design: process/design.md
+  # - Abbreviations: includes/abbr.md
+  # - License: license.md
+  # - Examples:
+  #     - Introduction: showcase/index.md
+  #     - Mission design:
+  #         - Table of contents: showcase/mission_design/index.md
+  #         - Lunar transfer [WIP]: showcase/mission_design/lunar_transfer.md
+  #         - Orbit design from a genetic algorithm: showcase/mission_design/orbit_design_ga.md
+  #     - Constellation analysis [WIP]: showcase/constellation_analysis/index.md
+  #     - Spacecraft navigation:
+  #         - Ground based navigation [WIP]: showcase/spacecraft_navigation/ground_nav.md
+  #         - CAPS [WIP]: showcase/spacecraft_navigation/CAPS.md
+  # - User guide:
+  #     - Getting started [WIP]: user_guide/start.md
+  #     - Orbit definition and manipulation [WIP]: user_guide/orbits.md
+  #     - Propagators and Monte Carlo runs [WIP]: user_guide/prop-mc.md
+  #     - High fidelity models [WIP]: user_guide/hifimodels.md
+  # - MathSpec:
+  #     - Introduction: MathSpec/index.md
+  #     - Time: MathSpec/time.md
+  #     - Celestial:
+  #         - Coordinate frames [WIP]: MathSpec/celestial/coord_systems.md
+  #         - Ephemeris [WIP]: MathSpec/celestial/ephemeris.md
+  #         - Orbital elements: MathSpec/celestial/orbital_elements.md
+  #         - Trajectory interpolation: MathSpec/celestial/interpolation.md
+  #         - Eclipses: MathSpec/celestial/eclipse.md
+  #         - Events [WIP]: MathSpec/celestial/events.md
+  #     - Dynamical Models:
+  #         - Overview: MathSpec/models/overview.md
+  #         - Gravity: MathSpec/models/gravity.md
+  #         - Spherical harmonics [WIP]: MathSpec/models/harmonics.md
+  #         - Solar radiation pressure: MathSpec/models/srp.md
+  #         - Drag [WIP]: MathSpec/models/drag.md
+  #         - Control laws [WIP]: MathSpec/models/control_laws.md
+  #         - Finite burns [WIP]: MathSpec/models/finite_burns.md
+  #     - Orbit determination:
+  #         - Overview: MathSpec/orbit_determination/overview.md
+  #         - Kalman filter: MathSpec/orbit_determination/kalman.md
+  #         - State noise compensation: MathSpec/orbit_determination/snc.md
+  #         - Smoothing: MathSpec/orbit_determination/smoothing.md
+  #         - Iteration: MathSpec/orbit_determination/iteration.md
+  #         - Measurement generation: MathSpec/orbit_determination/measurements.md
+  #     - Monte Carlo [WIP]:
+  #         - Overview: MathSpec/monte_carlo/overview.md
+  #         - Error modeling: MathSpec/monte_carlo/error_models.md
+  #     - Optimization:
+  #         - State transition matrix: MathSpec/optimization/stm.md
+  #         - Targeting: MathSpec/optimization/targeting.md
+  #         - Multiple shooting [WIP]: MathSpec/optimization/multiple_shooting.md
+  #         - Optimizer [WIP]: MathSpec/optimization/panoc.md
+  #     - Propagators: MathSpec/propagators.md
+  #     - Appendices:
+  #         - Dual numbers: MathSpec/appendix/dual_numbers.md
+
+  # - Versions: versions.md
+  # - Blog: blog/index.md
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: iso_date
+
+copyright: Creative Commons License Attribution-ShareAlike 4.0 (CC BY-SA 4.0) - Christopher Rabotin et al.
+
+repo_url: https://github.com/nyx-space/quality-assurance
+repo_name: nyx-space/quality-assurance
+
+extra:
+  social:
+    - icon: material/linkedin
+      link: https://www.linkedin.com/in/chrisrabotin/
+      name: Chris Rabotin on LinkedIn
+    - icon: material/twitter
+      link: https://twitter.com/CRabotin
+      name: Chris Rabotin on Twitter
+    - icon: material/email-outline
+      link: mailto:chris@nyxspace.com
+      name: Email me
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - abbr
+  - attr_list
+  - pymdownx.snippets:
+      auto_append:
+        - /includes/abbr.md
+  - admonition
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - footnotes
+  # - pymdownx.arithmatex:
+  #     generic: true
+  # - pymdownx.details
+  # - pymdownx.tabbed
+  # - pymdownx.superfences
+# extra_javascript:
+#   - js/config.js
+#   - https://polyfill.io/v3/polyfill.min.js?features=es6
+#   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
