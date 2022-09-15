@@ -2,8 +2,8 @@ The overall quality assurance process can be broken down into these procedures, 
 
 ``` mermaid
 graph TD
-  A[[Requirements & test plans]] --> B[[Detailed design, incl. API & ICD]] --> C[[Development via TDD]] --> D[[Unit and Integration Testing]] --> E[[Verif. and validation testing]] --> F[[Final review & sign-off]]
-  F --> |Select requirements <br/> for next version| A
+  A[[Requirements & <br/> test plans]] --> B[[Detailed design, <br/>incl. API & ICD]] --> C[[TDD: Tests and code  <br/>development]] --> D[[Verification and <br/> validation testing]] --> E[[Final review & sign-off]]
+  E --> |Select requirements <br/> for next version| A
 ```
 
 ## Legend

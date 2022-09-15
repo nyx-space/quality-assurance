@@ -4,7 +4,7 @@ graph TD
     GR --> TP("Test plan development"):::engr
     TP --> ReqApproval{"Lead approval"}:::lead
     ReqApproval --> |Revision required| GR
-    ReqApproval --> |Approved| ReqOK[[Detailed design]]
+    ReqApproval --> |Approved| ReqOK[[Design]]
 
 
     classDef lead fill:green,opacity:0.6,stroke:darkgreen,stroke-width:2px,color:black
