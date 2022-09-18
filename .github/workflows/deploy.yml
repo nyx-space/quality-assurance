@@ -12,22 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - name: Set up Python version
-      #   uses: actions/setup-python@v3.0.0
-      #   with:
-      #     python-version: 3.8
-      #     cache: "pip"
-
       - name: Install dependencies
         run: pip install --upgrade pip && pip install pipenv && python --version ; pip --version ; pipenv --version; pipenv --python `which python`; pipenv install
 
       - name: Build mkdocs
         run: pipenv run mkdocs build
 
-      - name: Install firebase
-        run: apt-get update && apt-get install npm -y && npm install -g firebase-tools
-
       - name: Deploy to Firebase
-        env: # Or as an environment variable
+        uses: joinflux/firebase-tools@v9.16.0
+        with:
+          args: deploy --only hosting
+        env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --token $FIREBASE_TOKEN
