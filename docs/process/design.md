@@ -2,15 +2,15 @@
 graph TD
     ReqOK[[Requirements]] --> AlgDemo("Algorithm demo"):::engr
     AlgDemo --> ApiIcd("API & ICD definition"):::engr
-    ApiIcd --> PR1{"Peer review"}:::engr
-    PR1 --> |Revision required| ApiIcd
+    ApiIcd --> PR1{"Peer review"}:::lead
+    PR1 --> |Revision<br/>required| ApiIcd
     PR1 --> |Approved| DD(Detailed design):::engr
     DD --> PR2{"Peer review"}:::engr
-    PR2 --> |Revision required| DD
-    PR2 --> |Approved| LR1{"Lead Design Approval"}:::lead
-    LR1 -.-> |Algorithm revision required| AlgDemo
-    LR1 --> |API/ICD revision required| ApiIcd
-    LR1 --> |Design revision required| DD
+    PR2 --> |Revision<br/>required| DD
+    PR2 --> |Approved| LR1{"Lead Design<br/>Approval"}:::lead
+    LR1 -.-> |Algorithm revision<br/>required| AlgDemo
+    LR1 --> |API/ICD revision<br/>required| ApiIcd
+    LR1 --> |Design revision<br/>required| DD
     LR1 --> |Approved| DDOK[[Development]]
 
     click ReqOK "/process/requirements/"
@@ -41,9 +41,9 @@ If these are not interfaces at the project scope boundary, then the interface is
 **The second part of the design consists in defining the interface between the changes to introduce and the software or hardware.** The ICD should be versioned for traceability, preferably in a control system that allows for differences to be easily inspected (e.g. `git`). The exact version of the ICD used should be referenced in the code: this enables any auditor to quickly determine whether a piece of functionality adheres to the latest ICD version.
 
 ## High level architecture
-The high-level architecture captures the block definition diagram of the overall product, the ownership of each block, the sequence diagrams of the core functionality of the software project, and the high-level details expected to inform the development.
+The high-level architecture captures the block definition diagram of the overall product, the ownership of each block[^1], the sequence diagrams of the core functionality of the software project, and the high-level details expected to inform the development.
 
-**After the approval of the API and ICD, and prior to the detailed design, the engineer shall add the functionality being worked on to the high level architecture document.** This will ensure proper documentation from the start along with an understanding of how this functionality fits into the large picture.
+**After the approval of the API and ICD, and prior to the detailed design, the engineer shall add the functionality being worked on to the high level architecture document.** This will ensure proper documentation from the start along with an understanding of how this functionality fits into the larger picture.
 
 ## Detailed design
 
@@ -54,10 +54,9 @@ Expected attributes captured in the Detailed Design may include the following:
 + Operating System
 + Programming Languages
 + Interfaces to hardware, other software, and definitions for off-nominal behavior
-+ Approaches to standard spacecraft software architecture items
 + Time systems used in the software (e.g. TAI or UTC)
-+ Logging capabilities for engineers running the software or even operations team
-+ Commanding and telemetry rates
++ Logging capabilities for engineers running the software or even operations teams
++ Telecommands and telemetry rates, mnemonics, and associated units
 + Onboard messaging and sequencing capabilities for flight software where applicable
 + Fault detection, isolation and recovery (FDIR) management
 + Use of standard libraries, drivers, etc.
@@ -99,6 +98,8 @@ As shown in the API documentation, [guidance laws](https://docs.rs/nyx-space/lat
 
 In fact, during the development of additional guidance laws, it became evident that the notion of "achievement" of a guidance law was important, and so was the preparation of a guidance law for the next call (e.g. to move onto a subsequent objective). This is OK: **the detailed design document is updated throughout the development of a product to account for changes.**
 
+
+[^1]: In the case of software design, the notion of _ownership_ refers to the part of the code which is responsible for managing another one. For example, if `Process A` _owns_ `Process B`, then `Process A` is the process which _starts_ `Process B`. It may further be responsible for ensuring that if `Process B` fails appropriate action is taken.
 
 *[API]: Application Programming Interface
 *[ICD]: Interface Control Document

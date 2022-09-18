@@ -32,11 +32,11 @@ At a minimum, integration tests exercise interfaces to other software, hardware,
 
 ## Verification testing
 
-Verification testing consists in proving compliance with the requirements and the detailed design. Verification may be determined by test, analysis, demonstration, or inspection or a combination thereof. The Lead duly inspects the testing results of the automated pipeline, assuming that verification testing is done there.
+Verification testing consists in proving compliance with the requirements and the detailed design. Verification may be determined by test, analysis, demonstration, or inspection or a combination thereof.
 
 ## Validation testing
 
-Validation testing is the process of showing proof that the software accomplishes the intended purpose based on stakeholder expectations and the CONOPS. This may be determined by a combination of test, analysis, demonstration, and inspection. The lead, with the optional support of a stakeholder, will perform or duly inspect this testing. Examples include running an end-to-end scenario and checking that a specific set of outputs is met given some inputs, and that these outputs match the stakeholder needs.
+Validation testing is the process of showing proof that the software accomplishes the intended purpose based on stakeholder expectations and the CONOPS. Examples include running an end-to-end scenario and checking that a specific set of outputs is met given some inputs, and that these outputs match the stakeholder needs. Upon release, the automatic generation of validation results should be stored as artifacts of the testing pipeline t allow them to be included in the release notes.
 
 ## Formal verification
 
@@ -45,6 +45,9 @@ Validation testing is the process of showing proof that the software accomplishe
     
     [_Design of Embedded Systems: Formal Models, Validation, and Synthesis_](https://doi.org/10.1016/B978-155860702-6/50009-0), Edwards et al.
 
-Formal verification and property testing (or "hypothesis testing") is the process of _proving_ that the function will not fail under a set of conditions. In Rust, the [kani model checker](https://model-checking.github.io/kani/) is an example of formal verification: at compilation time, the Kani model will go through all possible inputs to a function given the input parameter types, and ensure that the function does not fail.
+Formal verification and property testing (or "hypothesis testing") is the process of _verifying_ that the function will not fail under a set of conditions.
+
+!!! note
+    In Rust, the [kani model checker](https://model-checking.github.io/kani/) is an example of formal verification: at compilation time, the Kani model will go through all possible inputs to a function given the input parameter types, and ensure that the function does not fail. In [Haskell](https://alexpeits.github.io/posts/2018-09-27-haskell-proofs.html), [Coq](https://coq.inria.fr/), and a few other languages, it should be possible to _prove_ the behavior.
 
 *[CONOPS]: Concept of Operations

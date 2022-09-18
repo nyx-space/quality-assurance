@@ -1,16 +1,16 @@
 ```mermaid
 graph TD
-    DDOK[[Design]] --> TDD("Tests development (TDD)"):::engr
-    TDD --> PR3{"Peer review of tests"}:::engr
-    PR3 --> |Revision required| TDD
+    DDOK[[Design]] --> TDD("Tests development<br/>(TDD)"):::engr
+    TDD --> PR3{"Peer review<br/> of tests"}:::engr
+    PR3 --> |Revision<br/>required| TDD
     PR3 --> |Approved| CD(Code development):::engr
-    CD --> PR4{"Code, unit, integr. review"}:::engr
-    PR4 --> |Revision required| CD
+    CD --> PR4{"Code, unit, integr. <br/>review"}:::engr
+    PR4 --> |Revision<br/>required| CD
     PR4 -.-> |Approved| LR2{"Lead review &<br/> Chief engr.<br/> sign-off"}:::lead
-    PR4 -.-> |Req. or design defect| LR3{"Defect identification"}:::lead
+    PR4 -.-> |Requirement<br/>or design defect| LR3{"Defect<br/>identification"}:::lead
     LR3 -.-> |Design defect| DDOK[[Design]]
-    LR3 --> |Req. defect| B[[Requirements]]
-    LR2 -.-> |Revision required| TDD
+    LR3 --> |Requirement<br/>defect| B[[Requirements]]
+    LR2 -.-> |Revision<br/>required| TDD
     LR2 -.-> |Approved| C[[Release]]
 
     click DDOK "/process/design/"

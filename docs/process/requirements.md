@@ -1,15 +1,16 @@
 ```mermaid
 graph TD
-    RN("Receive stakeholder needs"):::lead --> GR("Gather requirements"):::engr
+    RN("Receive stakeholder needs"):::sh --> GR("Gather requirements"):::lead
     GR --> TP("Test plan development"):::engr
     TP --> ReqApproval{"Lead approval"}:::lead
-    ReqApproval --> |Revision required| GR
+    ReqApproval --> |Revision<br/>required| GR
     ReqApproval --> |Approved| ReqOK[[Design]]
 
     click ReqOK "/process/design/"
 
     classDef lead fill:green,opacity:0.6,stroke:darkgreen,stroke-width:2px,color:black
     classDef engr fill:dodgerblue,opacity:0.6,stroke:navy,stroke-width:2px,color:black
+    classDef sh fill:orange,opacity:0.6,stroke:darkorange,stroke-width:2px,color:black
 ```
 
 **Requirements answer the question: _what does the system need to do?_** It does _not_ answer the question of _how does the system do this_?

@@ -32,8 +32,8 @@ theme:
 nav:
   - Purpose: index.md
   - Meta:
-      - Authors: meta/authors.md
       - Feedback: meta/feedback.md
+      - Authors: meta/authors.md
       - License: meta/license.md
   - Process:
       - Roles and responsibilities: process/roles.md
@@ -46,6 +46,7 @@ nav:
       - Software: guidelines/software.md
       - Embedded Software: guidelines/embedded.md
       - Testing: guidelines/testing.md
+      - Versioning: guidelines/versioning.md
   # - Abbreviations: includes/abbr.md
   # - License: license.md
   # - Examples:
@@ -133,9 +134,7 @@ markdown_extensions:
       permalink: true
   - abbr
   - attr_list
-  - pymdownx.snippets:
-      auto_append:
-        - /includes/abbr.md
+  - pymdownx.snippets
   - admonition
   - tables
   - pymdownx.emoji:
