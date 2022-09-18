@@ -42,6 +42,10 @@ nav:
       - Design: process/design.md
       - Development: process/development.md
       - Release: process/release.md
+  - Guidelines:
+      - Software: guidelines/software.md
+      - Embedded Software: guidelines/embedded.md
+      - Testing: guidelines/testing.md
   # - Abbreviations: includes/abbr.md
   # - License: license.md
   # - Examples:
