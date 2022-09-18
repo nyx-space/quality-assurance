@@ -8,10 +8,13 @@ graph TD
     DD --> PR2{"Peer review"}:::engr
     PR2 --> |Revision required| DD
     PR2 --> |Approved| LR1{"Lead Design Approval"}:::lead
-    LR1 --> |Algorithm revision required| AlgDemo
+    LR1 -.-> |Algorithm revision required| AlgDemo
     LR1 --> |API/ICD revision required| ApiIcd
     LR1 --> |Design revision required| DD
     LR1 --> |Approved| DDOK[[Development]]
+
+    click ReqOK "/process/requirements/"
+    click DDOK "/process/development/"
 
     classDef lead fill:green,opacity:0.6,stroke:darkgreen,stroke-width:2px,color:black
     classDef engr fill:dodgerblue,opacity:0.6,stroke:navy,stroke-width:2px,color:black
@@ -24,11 +27,11 @@ The design phase is broken down into four parts.
 ## Algorithm demonstration
 
 !!! note
-    If the requirement is unrelated to GNC or is a bug fix this step can be skipped. If, more generally, the task at hand does not involve a novel algorithm, then this step may simply provide a reference to the algorithm being used.
+    If the requirement is unrelated to GNC or is a bug fix this step can be skipped. If the requirement at hand does not involve a novel algorithm, then this step may simply provide a reference to the algorithm being used.
 
-Most GNC work is related to the development and implementation of specific algorithms, such as guidance laws. It is difficult to properly define all of the inputs and outputs of a given GNC algorithm only from a concept in one's mind or from a paper. Moreover, other engineers on the team may think of edge cases of a given algorithm that the developing engineer may not think of.
+Most GNC work is related to the development and implementation of specific algorithms, such as guidance laws. It is difficult to properly define all of the inputs and outputs of a given GNC algorithm only from a concept in one's mind or from a publication. Moreover, other engineers on the team may think of edge cases of a given algorithm that the developing engineer may not think of.
 
-Hence, **the first part of the design is to implement a proof of concept of the algorithm to be developed.** This proof of concept may live in isolation from the rest of the simulation code if exposing its interface leads to an easier demonstration of the algorithm.
+Hence, **the first part of the design is to implement a proof of concept of the algorithm to be developed.** This proof of concept may live in isolation from the rest of the code if exposing its interface leads to an easier demonstration of the algorithm.
 
 ## API and ICD definition
 The Interface Control Documents (ICDs) are the contracts established between the sides of each interface. If these interfaces live at the scope boundary with the stakeholder, then these are considered requirements and will be developed along with all other program requirements to ensure a consistent understanding between all relevant parties as well as to ensure appropriate testing is performed.
@@ -52,11 +55,11 @@ Expected attributes captured in the Detailed Design may include the following:
 + Programming Languages
 + Interfaces to hardware, other software, and definitions for off-nominal behavior
 + Approaches to standard spacecraft software architecture items
-+ Software time and vehicle time
-+ Logging capabilities for operations team
++ Time systems used in the software (e.g. TAI or UTC)
++ Logging capabilities for engineers running the software or even operations team
 + Commanding and telemetry rates
 + Onboard messaging and sequencing capabilities for flight software where applicable
-+ Fault and Redundancy Management
++ Fault detection, isolation and recovery (FDIR) management
 + Use of standard libraries, drivers, etc.
 
 ## Example: guidance laws in Nyx
@@ -72,13 +75,10 @@ To define the API, engineers ought to ask themselves **what are the inputs and o
 
 In the case of an anti-velocity guidance law, we will need at a minimum:
 
-+ The current spacecraft state, including its orbit, so we can compute the anti-velocity unit vector.
-+ A flag specifying whether or not to thrust at the current orbit
++ The current spacecraft state, including its orbit, so we can compute the anti-velocity unit vector;
++ A flag specifying whether or not to thrust at the current phasing angle of the orbit.
 
-We also know that the guidance law will be called from the equations of motion of the overall simulation. We expect that just after the guidance laws are called, the EOM will check that the vehicle can thrust (e.g. does it have any fuel remaining), what percentage of fuel it should be decrementing at the current simulation step, and the direction of the burn (so as to compute how that affects the position of the spacecraft). These are the outputs.
-
-+ `direction`
-+ `throttle` percentage
+We also know that the guidance law will be called from the equations of motion of the overall simulation. We expect that just after the guidance laws are called, the EOM will check that the vehicle can thrust (e.g. does it have any fuel remaining), what percentage of fuel it should be decrementing for the current simulation step, and the direction of the burn (so as to compute how that affects the position of the spacecraft). These are the outputs: direction and throttle percentage.
 
 ### High level design
 
@@ -95,7 +95,9 @@ sequenceDiagram
 
 ### Detailed design
 
-As shown in the API documentation, [guidance laws](https://docs.rs/nyx-space/latest/nyx_space/dynamics/guidance/trait.GuidanceLaw.html) are actually a notch more complicated than what this high level design expected. In fact, during the development of additional guidance laws, it became evident that the notion of "achievement" of a guidance law was important, and so was the preparation of a guidance law for the next call (e.g. to move onto a subsequent objective). This is OK: **the detailed design document is updated throughout the development of a product to account for changes.**
+As shown in the API documentation, [guidance laws](https://docs.rs/nyx-space/latest/nyx_space/dynamics/guidance/trait.GuidanceLaw.html) are actually a notch more complicated than what this high level design expected.
+
+In fact, during the development of additional guidance laws, it became evident that the notion of "achievement" of a guidance law was important, and so was the preparation of a guidance law for the next call (e.g. to move onto a subsequent objective). This is OK: **the detailed design document is updated throughout the development of a product to account for changes.**
 
 
 *[API]: Application Programming Interface
@@ -106,3 +108,4 @@ As shown in the API documentation, [guidance laws](https://docs.rs/nyx-space/lat
 *[technical debt]: "Technical debt is the implied cost of additional rework caused by choosing an easy solution now instead of using a better approach that would take longer." - Wikipedia (https://en.wikipedia.org/w/index.php?title=Technical_debt&oldid=1097653969)
 *[3-DOF]: Three degrees of freedom simulation
 *[EOM]: equations of motion
+*[FDIR]: Fault detection, isolation and recovery

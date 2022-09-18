@@ -1,9 +1,16 @@
-The overall quality assurance process can be broken down into these procedures, executed by different parties. Click on the relevant sections in the table of contents (on the left) to read the detail of each procedure.
+This process is heavily inspired by agile software development with a twist to accommodate space-related software. **For each version of the software, a number of requirements are chosen are these are worked until the next version is released.**
+
+The overall quality assurance process can be broken down into these procedures. Click on the relevant sections in the table of contents to read the detail of each procedure. Note that a dotted line means it's an asynchronous process, enabling engineers to work on another task.
 
 ``` mermaid
 graph TD
-  A[[Requirements & <br/> test plans]] --> B[[Detailed design, <br/>incl. API & ICD]] --> C[[TDD: Tests and code  <br/>development]] --> D[[Verification and <br/> validation testing]] --> E[[Final review & sign-off]]
-  E --> |Select requirements <br/> for next version| A
+  A[[Requirements & <br/> test plans]] --> B[[Detailed design, <br/>incl. API & ICD]] --> C[[TDD: Tests and code  <br/>development]] -->D[[Final review & release]]
+  D --> |Select requirements <br/> for next version| A
+
+  click A "/process/requirements/"
+  click B "/process/design/"
+  click C "/process/development/"
+  click D "/process/release/"
 ```
 
 ## Legend

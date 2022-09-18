@@ -6,10 +6,13 @@ graph TD
     ReqApproval --> |Revision required| GR
     ReqApproval --> |Approved| ReqOK[[Design]]
 
+    click ReqOK "/process/design/"
 
     classDef lead fill:green,opacity:0.6,stroke:darkgreen,stroke-width:2px,color:black
     classDef engr fill:dodgerblue,opacity:0.6,stroke:navy,stroke-width:2px,color:black
 ```
+
+**Requirements answer the question: _what does the system need to do?_** It does _not_ answer the question of _how does the system do this_?
 
 The requirements process is dependent on the objectives and therefore determined on a per-project basis. Yet, the following general process still applies:
 

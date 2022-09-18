@@ -41,6 +41,7 @@ nav:
       - Requirements: process/requirements.md
       - Design: process/design.md
       - Development: process/development.md
+      - Release: process/release.md
   # - Abbreviations: includes/abbr.md
   # - License: license.md
   # - Examples:
@@ -119,6 +120,9 @@ extra:
     - icon: material/email-outline
       link: mailto:chris@nyxspace.com
       name: Email me
+  analytics:
+    provider: google
+    property: G-MS7Q4686TJ
 
 markdown_extensions:
   - toc:
