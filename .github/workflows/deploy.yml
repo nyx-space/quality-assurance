@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python version
-        uses: actions/setup-python@v3.0.0
-        with:
-          python-version: 3.8
-          cache: "pip"
+      # - name: Set up Python version
+      #   uses: actions/setup-python@v3.0.0
+      #   with:
+      #     python-version: 3.8
+      #     cache: "pip"
 
       - name: Install dependencies
         run: pip install pipenv && pipenv install
