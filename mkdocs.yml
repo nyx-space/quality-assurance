@@ -127,7 +127,7 @@ extra:
       name: Email me
   analytics:
     provider: google
-    property: G-MS7Q4686TJ
+    property: G-ECPHPS28RT
 
 markdown_extensions:
   - toc:
