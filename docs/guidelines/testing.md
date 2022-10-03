@@ -30,6 +30,11 @@ If property testing or formal verification is not a possibility for this project
 
 At a minimum, integration tests exercise interfaces to other software, hardware, and subsystems. They provide indication that the API or ICD has changed.
 
+Integration testing is also when memory leaks should be analyzed for, unless the language prevents memory leaks by design.
+
+!!! tip
+    Excellent tools for analyzing memory leaks include `valgrind`'s `massif` tool.
+
 ## Verification testing
 
 Verification testing consists in proving compliance with the requirements and the detailed design. Verification may be determined by test, analysis, demonstration, or inspection or a combination thereof.
